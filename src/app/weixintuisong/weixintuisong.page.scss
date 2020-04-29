@@ -1,0 +1,84 @@
+.content {
+  width: 100%;
+}
+ion-toolbar {
+  color: black;
+}
+@media screen and (width:320px){
+  .margintop_title{
+    // width: -webkit-fill-available;
+    width: 250px;
+    margin-top: 0vh;
+  }
+}
+@media screen and (width:375px){
+  .margintop_title{
+    // width: -webkit-fill-available;
+    width: 200px;
+    margin-top: 0vh;
+  }
+}
+
+.toptextarea {
+  padding: 0;
+  border: 1px solid #e8e7e9;
+  width: 100%;
+  height: 7rem;
+}
+.list-ios {
+  margin-bottom: 0.4rem;
+}
+.toptextarea {
+  padding: 0;
+  border: 1px solid #e8e7e9;
+  width: 100%;
+  height: 7rem;
+}
+.types {
+  width: 100%;
+}
+.types_text {
+  width: 100%;
+
+  padding-left: 2%;
+  line-height: 6vh;
+  margin-top: 2vh;
+}
+.types_input {
+  width: 100%;
+
+  padding-left: 2%;
+}
+.ion_text {
+  color: #666666;
+  width: 60%;
+}
+.ion_input {
+  color: #666666;
+  width: 70%;
+}
+.ion_button_shh {
+  background-color: #3880ff;
+  color: white;
+  padding: 2vh 41%;
+  border-radius: 0.5em;
+  margin-left: 2%;
+}
+.ion_button_jj {
+  background-color: red;
+  color: white;
+  padding: 2vh 44.5%;
+  border-radius: 0.5em;
+  margin-left: 2%;
+}
+
+.img_bg {
+  position: absolute;
+  right: 1.5rem;
+  top: 11rem;
+  z-index: 3;
+  width: 5rem;
+}
+.col-left{
+  left:-0.3rem;
+}

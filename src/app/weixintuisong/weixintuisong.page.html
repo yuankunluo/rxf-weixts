@@ -1,0 +1,132 @@
+<ion-header>
+  <ion-toolbar >
+    <ion-title>{{exampleJson.content_param.title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content style="background: #e8e7e9;">
+  <ng-container *ngFor="let item of exampleJson.content_param.item;">
+    <ng-container *ngIf="item.act_type == 'label'">
+      <ng-container *ngIf="item.visible == '1'">
+      <ion-item no-lines>
+        <ion-label  style="display: flex;">
+          <ion-text style="flex-shrink: 0;">{{item.title}}：</ion-text>
+          <ion-text style="white-space:pre-wrap !important;word-break:break-all;">{{item.content}}</ion-text>
+        </ion-label>
+      </ion-item>
+      </ng-container>
+    </ng-container>
+
+      <ng-container *ngIf="item.act_type == 'input'">
+        <ng-container *ngIf="item.visible == '1'">
+        <ion-item  no-lines>
+          <p >{{item.title}}：</p>
+          <p item-end >
+            <ng-container *ngIf="status=='0'">
+            <ion-input  type="text" placeholder="请输入{{item.title}}"  [(ngModel)]="item.content"></ion-input>
+            </ng-container>
+            <ng-container *ngIf="status=='1'">
+              {{item.content}}
+            </ng-container>
+          </p>
+        </ion-item>
+        </ng-container>
+      </ng-container>
+
+    <ng-container *ngIf="item.act_type == 'url'">
+      <ng-container *ngIf="item.visible == '1'">
+        <ion-item   (click)="gotourl(item.url)">
+          <ion-col size="11" class="col-left">
+            {{item.title}}
+          </ion-col>
+          <ion-col size="1" >
+            <ion-icon name="arrow-forward"></ion-icon>
+          </ion-col>
+        </ion-item>
+      </ng-container>
+    </ng-container>
+
+    <ng-container *ngIf="item.act_type == 'api'">
+      <ng-container *ngIf="item.visible == '1'">
+        <ion-item   (click)="postApiUrl(item.url,item.content)">
+          <ion-col size="11" class="col-left">
+            {{item.title}}
+          </ion-col>
+          <ion-col size="1" >
+            <ion-icon name="arrow-forward"></ion-icon>
+          </ion-col>
+        </ion-item>
+      </ng-container>
+    </ng-container>
+
+
+
+    <ng-container *ngIf="status=='0'">
+        <!--//转发人-->
+      <!--<ng-container *ngIf="item.act_type == 'check_btn'">-->
+      <ion-item lines="none">
+        <ion-label>
+          <span>转发人:
+      </span>
+        </ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-grid>
+          <ion-row class="margintop">
+            <ion-col size="3" class="ion-text-center" (click)="eject_cont('looker')">
+              <img src="assets/images/add.png" class="radius checker_hic">
+            </ion-col>
+            <ng-container *ngFor="let item of looker_list;let inx = index">
+              <ion-col size="3" class="ion-text-center">
+                <img [src]="item.head_pic" (click)="delete_checker(inx,'looker')" class="radius checker_hic">
+              </ion-col>
+            </ng-container>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <!--</ng-container>-->
+      <!--//转发人-->
+      <ion-row>
+        <ng-container *ngIf="item.act_type == 'check_btn'">
+          <ng-container *ngIf="item.visible == '1'">
+          <ion-col>
+            <ion-button expand="block" color="primary" (click)="pass()">{{item.title}}</ion-button>
+          </ion-col>
+          </ng-container>
+        </ng-container>
+      </ion-row>
+      <!--<ion-row>-->
+        <!--<ng-container *ngIf="item.act_type == 'check_btn'">-->
+          <!--<ng-container *ngIf="item.visible == '1'">-->
+            <!--<ion-col>-->
+              <!--<ion-button expand="block" color="success" (click)="forward()">转审</ion-button>-->
+            <!--</ion-col>-->
+          <!--</ng-container>-->
+        <!--</ng-container>-->
+      <!--</ion-row>-->
+      <ion-row>
+        <ng-container *ngIf="item.act_type == 'refuse_btn'">
+          <ng-container *ngIf="item.visible == '1'">
+          <ion-col>
+            <ion-button expand="block" color="danger" (click)="refuse()">{{item.title}}</ion-button>
+          </ion-col>
+          </ng-container>
+        </ng-container>
+      </ion-row>
+
+    </ng-container>
+    <ion-row>
+    </ion-row>
+  </ng-container>
+  <ng-container *ngIf="status != '0'">
+    <img class="img_bg" src="assets/images/yshh.png">
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" color="primary" (click)="myCheck()">我的审核</ion-button>
+      </ion-col>
+    </ion-row>
+  </ng-container>
+  <ion-row style="height: 2rem;">
+    <br />
+    <br />
+  </ion-row>
+</ion-content>

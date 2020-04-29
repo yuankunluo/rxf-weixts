@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>请选择转发人</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="onclose()">
+        <ion-icon name="ios-power"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="statacg == 0">
+    <ion-card-content text-center>
+      加载ing~~
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list *ngIf="statacg == 1">
+    <ion-row>
+      <ion-searchbar placeholder="搜索" [showCancelButton]="true" cancelButtonText="取消" (ionInput)="getItems($event)"></ion-searchbar>
+    </ion-row>
+    <ion-item no-lines>
+      <ion-label>选择部门</ion-label>
+
+      <ion-select [(ngModel)]="toppings" cancelText="取消" okText="确定" (ionChange)="get_the_phonebook()">
+        <ion-select-option [value]="0">全部</ion-select-option>
+        <ng-container *ngFor="let item of grouplist">
+          <ion-select-option [value]="item.group_id">{{item.group_name}}</ion-select-option>
+        </ng-container>
+
+      </ion-select>
+    </ion-item>
+    
+    <ng-container *ngFor="let item of user_list;let i=index">
+      <ion-item-divider>
+        <ion-label>
+          {{item.type}}
+        </ion-label>
+      </ion-item-divider>
+      <ion-item (click)="go_info(list)" *ngFor="let list of item.list">
+        <ion-label>{{list.usethis}}</ion-label>
+      </ion-item>
+    </ng-container>
+  </ion-list>
+</ion-content>
